@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>BankAccount &mdash; iticBank 1.02b documentació</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.02b',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="top" title="iticBank 1.02b documentació" href="index.html" />
+    <link rel="prev" title="Welcome to iticBank’s documentation!" href="index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <span class="target" id="module-BankAccount"></span><div class="section" id="bankaccount">
+<h1>BankAccount<a class="headerlink" href="#bankaccount" title="Link permanent a aquest títol">¶</a></h1>
+<p>Aquest mòdul conté la classe BankAccount la qual té els següents atributs:</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="13%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Atribut</th>
+<th class="head">Tipus</th>
+<th class="head">Significat</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>+id</td>
+<td>string</td>
+<td>És l&#8217;identificador del compte (cadena de caràcters)</td>
+</tr>
+<tr class="row-odd"><td>+status</td>
+<td>boolean</td>
+<td>És l&#8217;estat del compte: actiu o inactiu</td>
+</tr>
+<tr class="row-even"><td>+balance</td>
+<td>float</td>
+<td>És el saldo del compte</td>
+</tr>
+<tr class="row-odd"><td>+numDeposits</td>
+<td>int</td>
+<td>És el nombre d&#8217;ingressos mensuals</td>
+</tr>
+<tr class="row-even"><td>+numWithdrawals</td>
+<td>int</td>
+<td>1374.227  És el nombre de reintegraments mensuals</td>
+</tr>
+<tr class="row-odd"><td>+interestRate</td>
+<td>float</td>
+<td>És la taxa d&#8217;interès anual aplicable al compte</td>
+</tr>
+<tr class="row-even"><td>+monthlyServiceCharges</td>
+<td>float</td>
+<td>És la comissió fixa mensual</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<hr class="docutils" />
+<div class="section" id="funcions">
+<h1>Funcions<a class="headerlink" href="#funcions" title="Link permanent a aquest títol">¶</a></h1>
+</div>
+<dl class="class">
+<dt id="BankAccount.BankAccount">
+<em class="property">class </em><code class="descclassname">BankAccount.</code><code class="descname">BankAccount</code><span class="sig-paren">(</span><em>id</em>, <em>balance</em>, <em>interestRate</em>, <em>monthlyServicesChange</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/BankAccount.html#BankAccount"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BankAccount.BankAccount" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><dl class="method">
+<dt id="BankAccount.BankAccount.calcMonthlyInterest">
+<code class="descname">calcMonthlyInterest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/BankAccount.html#BankAccount.calcMonthlyInterest"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BankAccount.BankAccount.calcMonthlyInterest" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Calcula i ingressa l&#8217;interès mensual a abonar  en el compte, dividint per 12 l&#8217;interès anual aplicat i precedint a l&#8217;interès a la quantitat corresponent</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">c2</span><span class="o">=</span><span class="n">BankAccount</span><span class="p">(</span><span class="s2">&quot;ES1000492352082414205416&quot;</span><span class="p">,</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">0.025</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c2</span><span class="o">.</span><span class="n">calcMonthlyInterest</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">c2</span><span class="o">.</span><span class="n">balance</span>
+<span class="go">10.0208333333</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="BankAccount.BankAccount.deposit">
+<code class="descname">deposit</code><span class="sig-paren">(</span><em>amount</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/BankAccount.html#BankAccount.deposit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BankAccount.BankAccount.deposit" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Afageix diners el compte si aquest supera la quantitat de 25 Euros canvia el seu estat a Actiu(true)</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">BA</span><span class="o">=</span><span class="n">BankAccount</span><span class="p">(</span><span class="s2">&quot;ES6621000418401234567892&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">BA</span><span class="o">.</span><span class="n">status</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">BA</span><span class="o">.</span><span class="n">deposit</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">BA</span><span class="o">.</span><span class="n">status</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">BA</span><span class="o">.</span><span class="n">balance</span>
+<span class="go">30</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="BankAccount.BankAccount.monthlyProcess">
+<code class="descname">monthlyProcess</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/BankAccount.html#BankAccount.monthlyProcess"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BankAccount.BankAccount.monthlyProcess" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Aplica al compte el procés mensual consistent en cobrar les comissions i pagar els interessos mesuals, d&#8217;acord
+amb la política de comissions explicada a l&#8217;enunciat i amb l&#8217;interés mensual dels interessos.
+També posa a zero els comptadors d&#8217;ingressos i reintegraments realitzats mensualment, preparant el comte per al nou mes.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">c1</span><span class="o">=</span><span class="n">BankAccount</span><span class="p">(</span><span class="s2">&quot;ES6621000418401234567891&quot;</span><span class="p">,</span><span class="mf">100.0</span><span class="p">,</span><span class="mf">0.03</span><span class="p">,</span><span class="mf">2.5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c1</span><span class="o">.</span><span class="n">deposit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">c1</span><span class="o">.</span><span class="n">numDeposits</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c1</span><span class="o">.</span><span class="n">monthlyProcess</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">c1</span><span class="o">.</span><span class="n">balance</span>
+<span class="go">97.74375</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">c1</span><span class="o">.</span><span class="n">numDeposits</span>
+<span class="go">0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="BankAccount.BankAccount.withdraw">
+<code class="descname">withdraw</code><span class="sig-paren">(</span><em>amount</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/BankAccount.html#BankAccount.withdraw"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BankAccount.BankAccount.withdraw" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Retira diners del compte bancari</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">BA</span><span class="o">=</span><span class="n">BankAccount</span><span class="p">(</span><span class="s2">&quot;ES6621000418401234567891&quot;</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">BA</span><span class="o">.</span><span class="n">withdraw</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">BA</span><span class="o">.</span><span class="n">balance</span>
+<span class="go">25</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">BA</span><span class="o">=</span><span class="n">BankAccount</span><span class="p">(</span><span class="s2">&quot;ES6621000418401234567892&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">BA</span><span class="o">.</span><span class="n">withdraw</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">BA</span><span class="o">.</span><span class="n">balance</span>
+<span class="go">10</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Taula de Contingut</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">BankAccount</a></li>
+<li><a class="reference internal" href="#funcions">Funcions</a></li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="capítol anterior">Welcome to iticBank&#8217;s documentation!</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>Aquesta Pàgina</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/iticBank.txt"
+            rel="nofollow">Mostra Codi Font</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Cerca ràpida</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Ves a" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Entra paraules de cerca o el nom d'un mòdul, classe o funció.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Irene Mollet i ALvaro Mellado.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="_sources/iticBank.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
