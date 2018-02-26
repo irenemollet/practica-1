@@ -159,12 +159,24 @@ class BankAccount(object):
         else:
             print "No es pot executar la transferència. El teu compte està innactiu"
 
+    def operaDiners(self,cuantitat,operacio):
+        if operacio=="treure":
+            self.balance-=cuantitat
+        else:
+            self.balance+=cuantitat
+
+
 def opcions(op):
 
     o= raw_input("Entri opció:")
     while o not in op:
         o=raw_input("Entri opcio correcte: ")
     return o
+def cuantitat():
+    c = raw_input("Cuantitat a transferir:")
+    while not float(c):
+        c = raw_input("Error. Introdueixi una cuantitat correcte:")
+    return c
 
 def menu2(compte):
 
@@ -176,15 +188,16 @@ def menu2(compte):
 
     o=opcions("01234")
     if o=="0":
-        
+        c=cuantitat()
+        BankAccount.operaDiners(compte,c,"treure")
+        print "El seu saldo és:"+BankAccount.balance
     elif o=="1":
-        print "adeu"
+        c=cuantitat()
+        BankAccount.operaDiners(compte,c,"posar")
     elif o=="2":
-        cuantitat=raw_input("Cuantitat a transferir:")
-        while not float(cuantitat):
-            cuantitat=raw_input("Error. Introdueixi una cuantitat correcte:")
+        c=cuantitat()
         other=raw_input("Compte que rebra la transferència: ")
-        BankAccount.transferir(compte,other,cuantitat)
+        BankAccount.transferir(compte,other,c)
     elif o=="3":
         if BankAccount.status:
             print "ACTIU"
