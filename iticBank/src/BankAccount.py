@@ -132,17 +132,19 @@ class BankAccount(object):
         self.__canviarstatus()
         self.__reinicialitzar()
 
-
 if __name__=="__main__":
     c1=BankAccount("ES6621000418401234567891",100.0,0.03,2.5)
     c2=BankAccount("ES1000492352082414205416",10.0, 0.025, 5.0)
     print c1
+    print
     print c2
+    print
     c1.deposit(25)
     c1.deposit(10)
     c1.deposit(35)
     c1.deposit(1500)
     print c1
+    print
     c1.withdraw(100)
     c1.withdraw(50)
     c1.withdraw(100)
@@ -153,9 +155,12 @@ if __name__=="__main__":
     c2.withdraw(500)
     c2.withdraw(500)
     print c1
+    print
     print c2
+    print
     print "Starting month"
     c1.monthlyProcess()
     c2.monthlyProcess()
     print c1
+    print
     print c2
