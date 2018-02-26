@@ -29,11 +29,8 @@ import time
 
 
 class BankAccount(object):
-    def __guardarcompte(self):
-        f1=open(self.id, "w")
-        n=self.id+"&"+str(self.balance)+"&"+str(self.ianual)+"&"+str(self.carrega)+"&"+str(self.numDesposits)+"&"+str(self.numWithdrawals)
-        f1.write(n+"\n")
-    
+
+
     
     def __canviarstatus(self):
         self.status = self.balance >= 25
@@ -146,33 +143,40 @@ class BankAccount(object):
 
 
     def __guardarcompte(self):
+        """
+        Guarda la informació del comte bancari dins d'un fitxer que té per nom la id del compte
+        :return:
+        """
         f1 = open(self.id, "w")
-        n = self.id + "&" + str(self.balance) + "&" + str(self.ianual) + "&" + str(self.carrega)
+        n = self.id + "&" + str(self.balance) + "&" + str(self.ianual) + "&" + str(self.carrega) + "&" + str(self.numDesposits) + "&" + str(self.numWithdrawals)
         f1.write(n + "\n")
 
     def split1(id):
+        """
+        recupera la informació que hi ha dins dels fitxers de comptes
+        """
         f1 = open(id, "r")
-        a = f.read()
+        a = f1.read()
         a = a.split("&")
         c = BankAccount(a[0], a[1], a[2], a[3])
         return c
 
     def transferir(self,other,cuantitat):
         if self.status:
-            self.balance-=cuantitat
-            other.balance+=cuantitat
+            self.balance=float(self.balance)-cuantitat
+            other.balance=float(self.balance)+cuantitat
         else:
             print "No es pot executar la transferència. El teu compte està innactiu"
 
     def operaDiners(self,cuantitat,operacio):
         if operacio=="treure":
-            self.balance-=cuantitat
+            self.balance=float(self.balance)-cuantitat
         else:
-            self.balance+=cuantitat
+            self.balance=float(self.balance)+cuantitat
 
 def split1(id):
         f1=open(id, "r")
-        a=f.read()
+        a=f1.read()
         a=a.split("&")
         c=BankAccount(a[0],a[1],a[2],a[3])
         c.numDeposits=a[4]
@@ -183,15 +187,15 @@ def split1(id):
 def opcions(op):
 
     o= raw_input("Entri opció:")
-    while o not in op:
+    while o not in op or o=="":
         o=raw_input("Entri opcio correcte: ")
     return o
 
 def cuantitat():
-    c = raw_input("Cuantitat a transferir:")
+    c = raw_input("Cuantitat:")
     while not float(c):
         c = raw_input("Error. Introdueixi una cuantitat correcte:")
-    return c
+    return float(c)
 
 def menu2(compte):
 
@@ -205,22 +209,26 @@ def menu2(compte):
     if o=="0":
         c=cuantitat()
         BankAccount.operaDiners(compte,c,"treure")
-        print "El seu saldo és:"+BankAccount.balance
+        print "El seu saldo és:"+str(compte.balance)
     elif o=="1":
         c=cuantitat()
         BankAccount.operaDiners(compte,c,"posar")
+        print "El seu saldo és:" + str(compte.balance)
     elif o=="2":
         c=cuantitat()
         other=raw_input("Compte que rebra la transferència: ")
+        other=split1(other)
         BankAccount.transferir(compte,other,c)
+        print "El seu saldo és:" + str(compte.balance)
     elif o=="3":
-        if BankAccount.status:
+        if compte.status:
             print "ACTIU"
         else:
             print "INNACTIU"
 
     else:
         menu1()
+    menu2(compte)
 
 def menu1():
     print "[0] Entrar compte"
@@ -239,7 +247,7 @@ def menu1():
             if not t:
                 pass
             else:
-                menu2(compte)
+                menu2(c)
     else:
         pass
 
