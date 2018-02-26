@@ -143,7 +143,7 @@ class BankAccount(object):
             self.balance-=cuantitat
             other.balance+=cuantitat
         else:
-            print "No es pot executar la transferència. El teu conte està innactiu"
+            print "No es pot executar la transferència. El teu compte està innactiu"
 
 def opcions(op):
 
@@ -152,34 +152,47 @@ def opcions(op):
         o=raw_input("Entri opcio correcte: ")
     return o
 
-def menu2():
+def menu2(compte):
 
     print "[0] Treure diners"
     print "[1] Ingressar diners"
     print "[2] Transferir diners"
+    print "[3] Mostrar estat"
+    print "[4] Sortir"
 
-    o=opcions("012")
+    o=opcions("01234")
     if o=="0":
         print "hola"
     elif o=="1":
         print "adeu"
     elif o=="2":
-        print "quetal"
+        cuantitat=raw_input("Cuantitat a transferir:")
+        while not float(cuantitat):
+            cuantitat=raw_input("Error. Introdueixi una cuantitat correcte:")
+        other=raw_input("Compte que rebra la transferència: ")
+        BankAccount.transferir(compte,other,cuantitat)
+    elif o=="3":
+        if BankAccount.status:
+            print "ACTIU"
+        else:
+            print "INNACTIU"
+
+    else:
+        menu1()
 
 def menu1():
     print "[0] Entrar compte"
-    print "[1] Crear compte"
+    print "[1] Sortir"
 
     o=opcions("01")
     if o=="0":
-        menu2()
+        compte=raw_input("Entra compte: ")
+        menu2(compte)
     else:
-
-
-
+        pass
 
 
 if __name__ == "__main__":
     print "CAIXER AUTOMÀTIC"
     print
-    menu()
+    menu1()
