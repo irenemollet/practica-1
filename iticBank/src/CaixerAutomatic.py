@@ -29,7 +29,12 @@ import time
 
 
 class BankAccount(object):
-
+    def __guardarcompte(self):
+        f1=open(self.id, "w")
+        n=self.id+"&"+str(self.balance)+"&"+str(self.ianual)+"&"+str(self.carrega)
+        f1.write(n+"\n")
+        
+    
     def __canviarstatus(self):
         self.status = self.balance >= 25
 
@@ -165,6 +170,13 @@ class BankAccount(object):
         else:
             self.balance+=cuantitat
 
+def split1(id):
+        f1=open(id, "r")
+        a=f.read()
+        a=a.split("&")
+        c=BankAccount(a[0],a[1],a[2],a[3])
+        return c
+
 
 def opcions(op):
 
@@ -172,6 +184,7 @@ def opcions(op):
     while o not in op:
         o=raw_input("Entri opcio correcte: ")
     return o
+
 def cuantitat():
     c = raw_input("Cuantitat a transferir:")
     while not float(c):
@@ -210,11 +223,21 @@ def menu2(compte):
 def menu1():
     print "[0] Entrar compte"
     print "[1] Sortir"
-
+    t=False
     o=opcions("01")
     if o=="0":
-        compte=raw_input("Entra compte: ")
-        menu2(compte)
+        while not t:
+            compte=raw_input("Entra compte: ")
+            try:
+                c=split1(compte)
+                t=True
+            except:
+                print "La compte no existeix"
+                t=False
+            if not t:
+                pass
+            else:
+                menu2(compte)
     else:
         pass
 
