@@ -46,6 +46,7 @@ class BankAccount(object):
         self.numWithdrawals = 0
         self.carrega = monthlyServicesChange
 
+
     def withdraw(self, amount):
         """
         Retira diners del compte bancari
@@ -138,6 +139,19 @@ class BankAccount(object):
         self.__canviarstatus()
         self.__reinicialitzar()
 
+
+    def __guardarcompte(self):
+        f1 = open(self.id, "w")
+        n = self.id + "&" + str(self.balance) + "&" + str(self.ianual) + "&" + str(self.carrega)
+        f1.write(n + "\n")
+
+    def split1(id):
+        f1 = open(id, "r")
+        a = f.read()
+        a = a.split("&")
+        c = BankAccount(a[0], a[1], a[2], a[3])
+        return c
+
     def transferir(self,other,cuantitat):
         if self.status:
             self.balance-=cuantitat
@@ -162,7 +176,7 @@ def menu2(compte):
 
     o=opcions("01234")
     if o=="0":
-        print "hola"
+        
     elif o=="1":
         print "adeu"
     elif o=="2":
