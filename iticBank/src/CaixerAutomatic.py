@@ -37,8 +37,8 @@ class BankAccount(object):
         f1=open(id, "r")
         a=f.read()
         a=a.split("&")
-        return c=BankAccount(a[0],a[1],a[2],a[3])
-
+        c=BankAccount(a[0],a[1],a[2],a[3])
+        return c
 
     def __canviarstatus(self):
         self.status=self.balance>=25
