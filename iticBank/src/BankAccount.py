@@ -14,7 +14,7 @@ Aquest mòdul conté la classe BankAccount la qual té els següents atributs:
     +status                  boolean     És l'estat del compte: actiu o inactiu
     +balance                 float       És el saldo del compte
     +numDeposits             int         És el nombre d'ingressos mensuals
-    +numWithdrawals          int         1374.227  És el nombre de reintegraments mensuals
+    +numWithdrawals          int         És el nombre de reintegraments mensuals
     +interestRate            float       És la taxa d'interès anual aplicable al compte
     +monthlyServiceCharges   float       És la comissió fixa mensual
     ======================== =========== ===================================================
@@ -131,6 +131,7 @@ class BankAccount(object):
         self.balance-=n
         self.__canviarstatus()
         self.__reinicialitzar()
+
 
 if __name__=="__main__":
     c1=BankAccount("ES6621000418401234567891",100.0,0.03,2.5)
