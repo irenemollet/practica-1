@@ -138,34 +138,55 @@ class BankAccount(object):
         self.__canviarstatus()
         self.__reinicialitzar()
 
-def opcions():
+    def transferir(self,other,cuantitat):
+        if self.status:
+            self.balance-=cuantitat
+            other.balance+=cuantitat
+        else:
+            "No es pot executar la transefència, el compte està inactiu"
 
-    print "[0] Treure diners"
-    print "[1] Ingressar diners"
-    print "[2] Transferir diners"
-    print "[3] Crear un compte"
-
+def opcions(op):
     o= raw_input("Entri opció:")
-    while o not in "0123":
+    while o not in op:
         o=raw_input("Entri opcio correcte: ")
     return o
 
-def menu():
-    o=opcions()
+def menu2(compte):
+    print "[0] Treure diners"
+    print "[1] Ingressar diners"
+    print "[2] Transferir diners"
+
+    o=opcions("012")
     if o=="0":
         print "hola"
     elif o=="1":
         print "adeu"
     elif o=="2":
-        print "quetal"
-    elif o=="3":
-        print "jeje"
+        print "Cuantitat a transferir"
+
+        BankAccount.transferir(compte,other,cuantitat)
+
+def diners():
+    print "[A] 10€"
+    print "[B] 20€"
+    print "[C] 50€"
+    print "[D] 100€"
 
 
+def menu1():
+    print "[0] Entra al compte"
+    print "[1] Crea un compte"
+
+    o=opcions("01")
+    if o=="0":
+        compte=raw_input("Numero de compte:")
+
+        menu2(compte)
+
+    else:
 
 
 if __name__ == "__main__":
     print "CAIXER AUTOMÀTIC"
     print
     menu()
-    
