@@ -31,9 +31,9 @@ import time
 class BankAccount(object):
     def __guardarcompte(self):
         f1=open(self.id, "w")
-        n=self.id+"&"+str(self.balance)+"&"+str(self.ianual)+"&"+str(self.carrega)
+        n=self.id+"&"+str(self.balance)+"&"+str(self.ianual)+"&"+str(self.carrega)+"&"+str(self.numDesposits)+"&"+str(self.numWithdrawals)
         f1.write(n+"\n")
-        
+    
     
     def __canviarstatus(self):
         self.status = self.balance >= 25
@@ -175,6 +175,8 @@ def split1(id):
         a=f.read()
         a=a.split("&")
         c=BankAccount(a[0],a[1],a[2],a[3])
+        c.numDeposits=a[4]
+        c.numWithdrawals=a[5]
         return c
 
 
